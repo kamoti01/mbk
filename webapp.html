@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head><link rel="stylesheet" type="text/css" href="webapp.css"><title>mapbook</title>
+<!--added stuff-->
+<!--script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+<script>$(document).ready(function() {
+  $.ajaxSetup({ cache: true });
+  $.getScript('//connect.facebook.net/en_UK/all.js', function(){
+    FB.init({
+      appId: '225492377651556',
+    });     
+    $('#loginbutton,#feedbutton').removeAttr('disabled');
+    FB.getLoginStatus(updateStatusCallback);
+  });
+});</script--><!--added stuff ending-->
+</head>
+
+<body>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : 225492377651556,
+    status     : true, 
+    cookie     : true, 
+    xfbml      : true  
+  });
+
+  FB.Event.subscribe('auth.authResponseChange', function(response) { //subscribe=original function
+    if (response.status === 'connected') {
+      testAPI();
+    } else if (response.status === 'not_authorized') {
+      FB.login();
+    } else {
+      
+      FB.login();
+    }
+  });
+  };
+  (function(d){
+   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+   if (d.getElementById(id)) {return;}
+   js = d.createElement('script'); js.id = id; js.async = true;
+   js.src = "http://connect.facebook.net/en_US/all.js";
+   ref.parentNode.insertBefore(js, ref);
+  }(document));
+ 
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+        };   
+    FB.api("/me", function(response) {
+    	//added stuff
+    	if (response && !response.error){
+     		 console.log('Good to see you, ' + response.name + '.');
+          GET graph.facebook.com
+          /bgolub?
+          fields=id,name,picture, posts.limit(5)
+     		 	//me?
+     		 //	fields=posts.limit(10)
+
+  });
+
+  //};
+
+</script>
+<!--script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=225492377651556";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+}(document, 'script', 'facebook-jssdk')); </script-->
+
+<!--script type="text/javascript" src="http://jh.revolvermaps.com/2/1.js?i=7hggu8ywq0h&amp;s=220&amp;m=0&amp;v=false&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000" async="async"></script>
+
+  <Below we include the Login Button social plugin. This button uses the JavaScript SDK to
+  present a graphical Login button that triggers the FB.login()
+  function when clicked. -->
+<!--script type="text/javascript"
+	src="http://ji.revolvermaps.com/2/1.js?i=8u7atb8o0dd&amp;s=650&amp;m=6&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000"
+	async="async"></script-->
+<div class="buttPos"><fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button></div>
+
+<!--div class="fb-activity" data-site="developers.facebook.com" data-action="likes, recommends" data-colorscheme="dark" data-header="true"></div-->
+ <!--https://www.facebook.com/FacebookDevelopers/posts/10151471074398553-->
+ <!--script type="text/javascript"
+  src="http://ji.revolvermaps.com/2/1.js?i=8u7atb8o0dd&amp;s=650&amp;m=6&amp;v=true&amp;r=false&amp;b=000000&amp;n=false&amp;c=ff0000"
+  async="async"></script-->
+<!--script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-post" data-href=https://www.facebook.com/FacebookDevelopers/posts/10151471074398553" data-width="50"> <div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/FacebookDevelopers/posts/10151471074398553"></a></div></div>
+<div class="fb-post" data-href="https://www.facebook.com/george.batah/posts/10152306010882235:0" data-width="100"><div class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/george.batah/posts/10152306010882235:0">Post</a> by <a href="https://www.facebook.com/george.batah">George Batah</a>.</div></div-->
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head><title>3D map</title>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  var ge;
+  google.load("earth", "1.x", {"other_params":"sensor=true"});
+  
+  function init() {
+  google.earth.createInstance('map3d', initCB, failureCB);
+  }
+  function initCB(instance) {
+   ge = instance;
+   ge.getWindow().setVisibility(true);
+   var placemark = ge.createPlacemark('');
+	placemark.setName("placemark");
+// Set the placemark's location.  
+	var point = ge.createPoint('');
+
+	point.setLatitude(12.345);
+	point.setLongitude(54.321);
+	placemark.setGeometry(point);
+
+// Add the placemark to Earth.
+	ge.getFeatures().appendChild(placemark);
+ge.getWindow().setVisibility(true);
+
+// Define what happens when a mousemove is detected on the globe.
+var maxAlt = -1000000;
+function recordAltitude(event) {
+   var currentAlt = event.getAltitude();
+   maxAlt = Math.max(maxAlt, currentAlt);
+   document.getElementById('altitude').innerHTML =
+      '<p>Current altitude: ' + currentAlt + '<br />Max altitude: '
+      + maxAlt + '</p>';
+}
+
+// Listen to the mousemove event on the globe.
+google.earth.addEventListener(ge.getGlobe(), 'mousemove', recordAltitude);
+}
+function failureCB(errorCode) {
+}
+
+google.setOnLoadCallback(init)
+
+</script>
+  </head>
+   <body>
+   <div id="map3d" style="height: 800px; width: 1200px;"></div>
+    </body>
+</html>
